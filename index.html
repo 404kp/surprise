@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Überraschung</title>
+  <style>
+    :root{--bg:#0f1720;--card:#0b1220;--accent:#60a5fa;--text:#e6eef8}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    body{display:grid;place-items:center;background:linear-gradient(180deg,#031026 0%,#072034 100%);color:var(--text)}
+    .card{background:rgba(255,255,255,0.03);padding:32px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,0.6);text-align:center;max-width:520px}
+    h1{margin:0 0 12px;font-size:1.6rem}
+    p{margin:0 0 18px;color:rgba(230,238,248,0.9)}
+    button{background:var(--accent);border:0;color:#08233b;padding:12px 18px;border-radius:8px;font-weight:600;cursor:pointer}
+    .muted{font-size:0.85rem;color:rgba(230,238,248,0.7);margin-top:12px}
+  </style>
+  <script>
+    // Ziel-URL base64-kodiert, damit der Link nicht direkt sichtbar ist
+    // Base64 für "https://halloballo.de/"
+    const encoded = 'aHR0cHM6Ly9oYWxsb2JhbGxvLmRlLw==';
+
+    function goNow(){
+      // replace() ersetzt die aktuelle History-Eintragung (keine Back-URL)
+      location.replace(atob(encoded));
+    }
+
+    // Automatisch nach 4 Sekunden weiterleiten
+    window.addEventListener('DOMContentLoaded', ()=>{
+      setTimeout(goNow, 4000);
+    });
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>Eine kleine Überraschung</h1>
+    <p>Du wirst gleich weitergeleitet. Wenn du nicht warten möchtest, klicke auf den Knopf.</p>
+    <button onclick="goNow()">Jetzt überraschen</button>
+    <div class="muted">Die Zieladresse wird absichtlich nicht sichtbar angezeigt.</div>
+  </div>
+</body>
+</html>
